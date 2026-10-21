@@ -17,7 +17,7 @@ send_message:
           multiline: true
     account:
       name: Tài khoản gửi
-      description: ID tài khoản trong add-on. Bỏ trống để dùng tài khoản mặc định.
+      description: ID, số điện thoại hoặc tên tài khoản gửi. Bỏ trống để dùng tài khoản online đầu tiên.
       selector:
         text:
     parse_mode:
@@ -58,6 +58,7 @@ send_tts:
           multiline: true
     account:
       name: Tài khoản gửi
+      description: ID, số điện thoại hoặc tên tài khoản gửi. Bỏ trống để dùng tài khoản online đầu tiên.
       selector:
         text:
     voice:
@@ -92,6 +93,7 @@ call:
           multiline: true
     account:
       name: Tài khoản gọi
+      description: ID, số điện thoại hoặc tên tài khoản gọi. Bỏ trống để dùng tài khoản online đầu tiên.
       selector:
         text:
     voice:
@@ -143,6 +145,7 @@ ring:
           multiline: true
     account:
       name: Tài khoản gọi
+      description: ID, số điện thoại hoặc tên tài khoản gọi. Bỏ trống để dùng tài khoản online đầu tiên.
       selector:
         text:
     voice:
@@ -193,7 +196,7 @@ hangup:
         text:
     account:
       name: Tài khoản
-      description: Chỉ kết thúc cuộc gọi của tài khoản này.
+      description: ID, số điện thoại hoặc tên tài khoản cần lọc.
       selector:
         text:
 
@@ -215,7 +218,7 @@ send_photo:
         text:
     account:
       name: Tài khoản gửi
-      description: ID tài khoản trong add-on. Bỏ trống để dùng tài khoản mặc định.
+      description: ID, số điện thoại hoặc tên tài khoản gửi. Bỏ trống để dùng tài khoản online đầu tiên.
       selector:
         text:
     caption:

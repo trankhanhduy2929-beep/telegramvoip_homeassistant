@@ -45,6 +45,8 @@ Có thể đổi URL/token sau khi cài bằng **Configure**.
 
 ## Services
 
+`account` nhận ID tài khoản, số điện thoại quốc tế hoặc tên tài khoản trong add-on. Bỏ trống để dùng tài khoản online đầu tiên.
+
 ### `telegram_voip.send_message`
 
 ```yaml
