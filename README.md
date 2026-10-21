@@ -25,7 +25,7 @@ Integration này **không chứa phần đăng nhập Telegram**. Cần cài add
 3. Cài **Telegram VoIP Notifier**.
 4. Restart Home Assistant.
 5. Settings > Devices & services > Add integration > **Telegram VoIP Notifier**.
-6. Nhập URL add-on, ví dụ `http://telegram_voip:3332`, và API token.
+6. Nhập URL add-on, ví dụ `http://local-telegram-voip:3332`, và API token.
 
 ### Thủ công
 
@@ -36,7 +36,7 @@ integration.
 ## Cấu hình
 
 - **Add-on URL**: URL nội bộ của add-on, thường là
-  `http://telegram_voip:3332`. Không thêm dấu `/` ở cuối.
+  `http://local-telegram-voip:3332`. Không thêm dấu `/` ở cuối.
 - **API token**: token trong add-on Configuration. Nếu để trống, add-on tự sinh
   token tại `/data/api_token`.
 
