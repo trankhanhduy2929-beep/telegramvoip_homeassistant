@@ -1,0 +1,48 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Connect Telegram VoIP",
+        "description": "Enter the add-on URL and API token. The default token is stored in /data/api_token inside the add-on, or use the api_token add-on option.",
+        "data": {
+          "url": "Add-on URL",
+          "token": "API token",
+          "scan_interval": "Update interval (seconds)"
+        },
+        "data_description": {
+          "url": "Example: http://local-telegram-voip:8098 for a local add-on. Use the repository hostname for remote installs.",
+          "token": "Bearer token used to call the add-on REST API.",
+          "scan_interval": "How often account and call status is refreshed."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Cannot reach the add-on. Check the URL, port, and that the add-on is running.",
+      "invalid_auth": "The API token is invalid.",
+      "unknown": "Unknown error while connecting to the add-on."
+    },
+    "abort": {
+      "already_configured": "This add-on is already configured."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Telegram VoIP options",
+        "data": {
+          "scan_interval": "Update interval (seconds)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "accounts_online": {
+        "name": "Accounts online"
+      },
+      "active_calls": {
+        "name": "Active calls"
+      }
+    }
+  }
+}

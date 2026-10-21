@@ -1,0 +1,48 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Kết nối Telegram VoIP",
+        "description": "Nhập địa chỉ add-on và API token. Token mặc định nằm trong file /data/api_token của add-on, hoặc dùng giá trị api_token trong phần cấu hình add-on.",
+        "data": {
+          "url": "Địa chỉ add-on",
+          "token": "API token",
+          "scan_interval": "Chu kỳ cập nhật (giây)"
+        },
+        "data_description": {
+          "url": "Ví dụ http://local-telegram-voip:8098 khi add-on cài cục bộ. Đổi hostname nếu dùng repository khác.",
+          "token": "Bearer token dùng để gọi REST API của add-on.",
+          "scan_interval": "Khoảng thời gian giữa các lần đọc trạng thái tài khoản và cuộc gọi."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Không kết nối được add-on. Kiểm tra địa chỉ, cổng và add-on đã chạy chưa.",
+      "invalid_auth": "API token không đúng.",
+      "unknown": "Lỗi không xác định khi kết nối add-on."
+    },
+    "abort": {
+      "already_configured": "Add-on này đã được cấu hình."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Tùy chọn Telegram VoIP",
+        "data": {
+          "scan_interval": "Chu kỳ cập nhật (giây)"
+        }
+      }
+    }
+  },
+  "entity": {
+    "sensor": {
+      "accounts_online": {
+        "name": "Tài khoản đang online"
+      },
+      "active_calls": {
+        "name": "Cuộc gọi đang hoạt động"
+      }
+    }
+  }
+}

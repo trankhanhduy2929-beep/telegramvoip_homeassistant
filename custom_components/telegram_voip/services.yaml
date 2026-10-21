@@ -1,0 +1,198 @@
+send_message:
+  name: Gửi tin nhắn Telegram
+  description: Gửi tin nhắn văn bản từ một tài khoản Telegram đã cấu hình.
+  fields:
+    to:
+      name: Người nhận
+      description: Username, số điện thoại hoặc ID Telegram.
+      required: true
+      selector:
+        text:
+    message:
+      name: Nội dung
+      description: Nội dung tin nhắn.
+      required: true
+      selector:
+        text:
+          multiline: true
+    account:
+      name: Tài khoản gửi
+      description: ID tài khoản trong add-on. Bỏ trống để dùng tài khoản mặc định.
+      selector:
+        text:
+    parse_mode:
+      name: Định dạng
+      description: Cách Telegram hiểu nội dung.
+      selector:
+        select:
+          options:
+            - label: Tự động
+              value: ""
+            - label: Văn bản thuần
+              value: plain
+            - label: Markdown
+              value: markdown
+            - label: HTML
+              value: html
+    silent:
+      name: Gửi im lặng
+      description: Gửi không kèm thông báo âm thanh.
+      default: false
+      selector:
+        boolean:
+
+send_tts:
+  name: Gửi tin nhắn thoại
+  description: Tạo giọng nói từ văn bản và gửi voice message Telegram.
+  fields:
+    to:
+      name: Người nhận
+      required: true
+      selector:
+        text:
+    message:
+      name: Nội dung đọc
+      required: true
+      selector:
+        text:
+          multiline: true
+    account:
+      name: Tài khoản gửi
+      selector:
+        text:
+    voice:
+      name: Giọng đọc
+      description: Mã giọng Edge TTS, ví dụ vi-VN-HoaiMyNeural.
+      selector:
+        text:
+    rate:
+      name: Tốc độ
+      description: Tốc độ đọc, ví dụ +0% hoặc -10%.
+      selector:
+        text:
+    caption:
+      name: Chú thích
+      selector:
+        text:
+
+call:
+  name: Gọi và phát TTS
+  description: Gọi P2P Telegram, chờ người nhận nghe máy rồi phát nội dung TTS.
+  fields:
+    to:
+      name: Người nhận
+      required: true
+      selector:
+        text:
+    message:
+      name: Nội dung đọc
+      required: true
+      selector:
+        text:
+          multiline: true
+    account:
+      name: Tài khoản gọi
+      selector:
+        text:
+    voice:
+      name: Giọng đọc
+      selector:
+        text:
+    rate:
+      name: Tốc độ
+      selector:
+        text:
+    ring_timeout:
+      name: Thời gian đổ chuông
+      description: Giây chờ người nhận bấm nghe máy.
+      default: 45
+      selector:
+        number:
+          min: 10
+          max: 180
+          unit_of_measurement: s
+    wait:
+      name: Chờ cuộc gọi kết thúc
+      description: Chặn service cho đến khi cuộc gọi kết thúc hoặc hết wait_seconds.
+      default: false
+      selector:
+        boolean:
+    wait_seconds:
+      name: Thời gian chờ tối đa
+      default: 60
+      selector:
+        number:
+          min: 5
+          max: 180
+          unit_of_measurement: s
+
+ring:
+  name: Chuông báo động
+  description: Gọi lặp nhiều lần, phát TTS khi người nhận nghe máy, tùy chọn gửi kèm tin nhắn.
+  fields:
+    to:
+      name: Người nhận
+      required: true
+      selector:
+        text:
+    message:
+      name: Nội dung đọc
+      required: true
+      selector:
+        text:
+          multiline: true
+    account:
+      name: Tài khoản gọi
+      selector:
+        text:
+    voice:
+      name: Giọng đọc
+      selector:
+        text:
+    rate:
+      name: Tốc độ
+      selector:
+        text:
+    attempts:
+      name: Số lần gọi
+      default: 2
+      selector:
+        number:
+          min: 1
+          max: 10
+    interval:
+      name: Khoảng nghỉ giữa các lần
+      default: 5
+      selector:
+        number:
+          min: 0
+          max: 600
+          unit_of_measurement: s
+    ring_timeout:
+      name: Thời gian đổ chuông mỗi lần
+      default: 30
+      selector:
+        number:
+          min: 10
+          max: 180
+          unit_of_measurement: s
+    send_message:
+      name: Gửi kèm tin nhắn
+      default: true
+      selector:
+        boolean:
+
+hangup:
+  name: Kết thúc cuộc gọi
+  description: Hủy một cuộc gọi hoặc toàn bộ cuộc gọi đang hoạt động.
+  fields:
+    call_id:
+      name: ID cuộc gọi
+      description: Bỏ trống để kết thúc mọi cuộc gọi đang hoạt động.
+      selector:
+        text:
+    account:
+      name: Tài khoản
+      description: Chỉ kết thúc cuộc gọi của tài khoản này.
+      selector:
+        text:
