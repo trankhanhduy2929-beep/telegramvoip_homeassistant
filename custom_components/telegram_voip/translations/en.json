@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Connect Telegram VoIP",
-        "description": "Enter the add-on URL and API token. The default token is stored in /data/api_token inside the add-on, or use the api_token add-on option.",
+        "description": "Enter the add-on URL and API token. Copy the token from the add-on at Settings → API token for custom integration.",
         "data": {
           "url": "Add-on URL",
           "token": "API token",
@@ -11,7 +11,7 @@
         },
         "data_description": {
           "url": "Example: http://local-telegram-voip:3332 for a local add-on. Use the repository hostname for remote installs.",
-          "token": "Bearer token used to call the add-on REST API.",
+          "token": "Bearer token used to call the add-on REST API; copy it from the add-on Settings.",
           "scan_interval": "How often account and call status is refreshed."
         }
       }

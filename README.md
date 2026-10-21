@@ -3,6 +3,7 @@
 Custom integration gọi add-on **Telegram VoIP Notifier** qua REST API để:
 
 - gửi tin nhắn Telegram từ nhiều tài khoản;
+- gửi ảnh từ URL hoặc dữ liệu ảnh kèm chú thích;
 - gửi voice message bằng Edge TTS;
 - gọi P2P 1:1 và phát TTS khi người nhận nghe máy;
 - gọi lặp làm chuông báo động;
@@ -37,8 +38,8 @@ integration.
 
 - **Add-on URL**: URL nội bộ của add-on, thường là
   `http://local-telegram-voip:3332`. Không thêm dấu `/` ở cuối.
-- **API token**: token trong add-on Configuration. Nếu để trống, add-on tự sinh
-  token tại `/data/api_token`.
+- **API token**: sao chép trong add-on tại **Cài đặt → API token cho custom
+  integration**.
 
 Có thể đổi URL/token sau khi cài bằng **Configure**.
 
@@ -50,7 +51,7 @@ Có thể đổi URL/token sau khi cài bằng **Configure**.
 action: telegram_voip.send_message
 data:
   account: "+84901234567"
-  recipient: "@username"
+  to: "@username"
   message: "Cảnh báo từ Home Assistant"
 ```
 
@@ -60,10 +61,23 @@ data:
 action: telegram_voip.send_tts
 data:
   account: "+84901234567"
-  recipient: "@username"
-  text: "Cửa chính đang mở."
+  to: "@username"
+  message: "Cửa chính đang mở."
   voice: "vi-VN-HoaiMyNeural"
 ```
+
+### `telegram_voip.send_photo`
+
+```yaml
+action: telegram_voip.send_photo
+data:
+  account: "+84901234567"
+  to: "@username"
+  image: "https://example.com/camera.jpg"
+  caption: "Ảnh camera cửa chính."
+```
+
+URL phải truy cập được từ Internet vì Telegram tải ảnh trực tiếp. Với ảnh nội bộ, chọn file trong Web UI.
 
 ### `telegram_voip.call`
 
@@ -71,8 +85,8 @@ data:
 action: telegram_voip.call
 data:
   account: "+84901234567"
-  recipient: "@username"
-  text: "Có người lạ trước cửa."
+  to: "@username"
+  message: "Có người lạ trước cửa."
   wait: true
   wait_seconds: 90
 ```
@@ -83,8 +97,8 @@ data:
 action: telegram_voip.ring
 data:
   account: "+84901234567"
-  recipient: "@username"
-  text: "Cảnh báo động."
+  to: "@username"
+  message: "Cảnh báo động."
   attempts: 2
   interval: 15
 ```

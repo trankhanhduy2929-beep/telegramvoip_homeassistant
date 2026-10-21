@@ -22,6 +22,7 @@ from .const import (
     ATTR_ATTEMPTS,
     ATTR_CALL_ID,
     ATTR_CAPTION,
+    ATTR_IMAGE,
     ATTR_INTERVAL,
     ATTR_MESSAGE,
     ATTR_PARSE_MODE,
@@ -42,6 +43,7 @@ from .const import (
     SERVICE_HANGUP,
     SERVICE_RING,
     SERVICE_SEND_MESSAGE,
+    SERVICE_SEND_PHOTO,
     SERVICE_SEND_TTS,
 )
 from .coordinator import TelegramVoipCoordinator
@@ -71,6 +73,16 @@ SEND_MESSAGE_SCHEMA = vol.Schema(
         vol.Required(ATTR_MESSAGE): _text(1, 4096),
         vol.Optional(ATTR_ACCOUNT): _text(1, 64),
         vol.Optional(ATTR_PARSE_MODE): vol.In(["", "plain", "markdown", "html"]),
+        vol.Optional(ATTR_SILENT, default=False): vol.Boolean(),
+    }
+)
+
+SEND_PHOTO_SCHEMA = vol.Schema(
+    {
+        vol.Required(ATTR_TO): _text(1, 128),
+        vol.Required(ATTR_IMAGE): _text(1, 12_000_000),
+        vol.Optional(ATTR_ACCOUNT): _text(1, 64),
+        vol.Optional(ATTR_CAPTION): _text(1, 1024),
         vol.Optional(ATTR_SILENT, default=False): vol.Boolean(),
     }
 )
@@ -157,6 +169,19 @@ async def _handle_send_message(call: ServiceCall) -> dict[str, Any]:
         _raise_api_error(err)
 
 
+async def _handle_send_photo(call: ServiceCall) -> dict[str, Any]:
+    try:
+        api = _get_api(call.hass)
+        return await api.async_send_photo(
+            to=call.data[ATTR_TO],
+            image=call.data[ATTR_IMAGE],
+            account=call.data.get(ATTR_ACCOUNT),
+            caption=call.data.get(ATTR_CAPTION),
+            silent=call.data.get(ATTR_SILENT, False),
+        )
+    except TelegramVoipApiError as err:
+        _raise_api_error(err)
+
 async def _handle_send_tts(call: ServiceCall) -> dict[str, Any]:
     try:
         api = _get_api(call.hass)
@@ -226,6 +251,13 @@ def _async_register_services(hass: HomeAssistant) -> None:
         SERVICE_SEND_MESSAGE,
         _handle_send_message,
         schema=SEND_MESSAGE_SCHEMA,
+        supports_response=SupportsResponse.OPTIONAL,
+    )
+    hass.services.async_register(
+        DOMAIN,
+        SERVICE_SEND_PHOTO,
+        _handle_send_photo,
+        schema=SEND_PHOTO_SCHEMA,
         supports_response=SupportsResponse.OPTIONAL,
     )
     hass.services.async_register(

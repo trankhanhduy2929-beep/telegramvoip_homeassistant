@@ -115,6 +115,27 @@ class TelegramVoipApi:
             timeout=120,
         )
 
+    async def async_send_photo(
+        self,
+        to: str,
+        image: str,
+        account: str | None = None,
+        caption: str | None = None,
+        silent: bool = False,
+    ) -> dict[str, Any]:
+        return await self._request(
+            "POST",
+            "api/photos",
+            {
+                "account": account,
+                "to": to,
+                "image": image,
+                "caption": caption,
+                "silent": silent,
+            },
+            timeout=120,
+        )
+
     async def async_call(
         self,
         to: str,

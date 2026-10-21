@@ -3,7 +3,7 @@
     "step": {
       "user": {
         "title": "Kết nối Telegram VoIP",
-        "description": "Nhập địa chỉ add-on và API token. Token mặc định nằm trong file /data/api_token của add-on, hoặc dùng giá trị api_token trong phần cấu hình add-on.",
+        "description": "Nhập địa chỉ add-on và API token. Sao chép token trong add-on tại Cài đặt → API token cho custom integration.",
         "data": {
           "url": "Địa chỉ add-on",
           "token": "API token",
@@ -11,7 +11,7 @@
         },
         "data_description": {
           "url": "Ví dụ http://local-telegram-voip:3332 khi add-on cài cục bộ. Đổi hostname nếu dùng repository khác.",
-          "token": "Bearer token dùng để gọi REST API của add-on.",
+          "token": "Bearer token dùng để gọi REST API của add-on; lấy từ Cài đặt trong add-on.",
           "scan_interval": "Khoảng thời gian giữa các lần đọc trạng thái tài khoản và cuộc gọi."
         }
       }

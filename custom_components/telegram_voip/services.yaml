@@ -196,3 +196,36 @@ hangup:
       description: Chỉ kết thúc cuộc gọi của tài khoản này.
       selector:
         text:
+
+send_photo:
+  name: Gửi ảnh Telegram
+  description: Gửi ảnh từ URL, dữ liệu ảnh hoặc file trong /data/media kèm chú thích.
+  fields:
+    to:
+      name: Người nhận
+      description: Username, số điện thoại hoặc ID Telegram.
+      required: true
+      selector:
+        text:
+    image:
+      name: Ảnh
+      description: URL http(s) truy cập được từ Internet, data URL base64 hoặc đường dẫn file trong /data/media.
+      required: true
+      selector:
+        text:
+    account:
+      name: Tài khoản gửi
+      description: ID tài khoản trong add-on. Bỏ trống để dùng tài khoản mặc định.
+      selector:
+        text:
+    caption:
+      name: Chú thích
+      description: Nội dung hiển thị dưới ảnh.
+      selector:
+        text:
+    silent:
+      name: Gửi im lặng
+      description: Gửi không kèm thông báo âm thanh.
+      default: false
+      selector:
+        boolean:
