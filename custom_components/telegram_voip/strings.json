@@ -10,7 +10,7 @@
           "scan_interval": "Chu kỳ cập nhật (giây)"
         },
         "data_description": {
-          "url": "Ví dụ http://local-telegram-voip:8098 khi add-on cài cục bộ. Đổi hostname nếu dùng repository khác.",
+          "url": "Ví dụ http://local-telegram-voip:3332 khi add-on cài cục bộ. Đổi hostname nếu dùng repository khác.",
           "token": "Bearer token dùng để gọi REST API của add-on.",
           "scan_interval": "Khoảng thời gian giữa các lần đọc trạng thái tài khoản và cuộc gọi."
         }

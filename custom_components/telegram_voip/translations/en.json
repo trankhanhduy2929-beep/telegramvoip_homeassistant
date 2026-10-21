@@ -10,7 +10,7 @@
           "scan_interval": "Update interval (seconds)"
         },
         "data_description": {
-          "url": "Example: http://local-telegram-voip:8098 for a local add-on. Use the repository hostname for remote installs.",
+          "url": "Example: http://local-telegram-voip:3332 for a local add-on. Use the repository hostname for remote installs.",
           "token": "Bearer token used to call the add-on REST API.",
           "scan_interval": "How often account and call status is refreshed."
         }
